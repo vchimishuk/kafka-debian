@@ -1,0 +1,31 @@
+Description: Set data logs directory to /var/lib/kafka
+Author: Viacheslav Chimishuk <vchimishuk@yandex.ru>
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: kafka-2.2.1/config/server.properties
+===================================================================
+--- kafka-2.2.1.orig/config/server.properties
++++ kafka-2.2.1/config/server.properties
+@@ -57,7 +57,7 @@ socket.request.max.bytes=104857600
+ ############################# Log Basics #############################
+
+ # A comma separated list of directories under which to store log files
+-log.dirs=/tmp/kafka-logs
++log.dirs=/var/lib/kafka
+
+ # The default number of log partitions per topic. More partitions allow greater
+ # parallelism for consumption, but this will also result in more files across
+@@ -133,4 +133,11 @@ zookeeper.connection.timeout.ms=6000
+ # The default value for this is 3 seconds.
+ # We override this to 0 here as it makes for a better out-of-the-box experience for development and testing.
+ # However, in production environments the default value of 3 seconds is more suitable as this will help to avoid unnecessary, and potentially expensive, rebalances during application startup.
+-group.initial.rebalance.delay.ms=0
+\ No newline at end of file
++group.initial.rebalance.delay.ms=0
++
++## ENVISIONX Note
++## Documentation for Kafka 0.8.2.x states auto.create.topics.enable is true by default,
++## but in some cases Kafka failed to autocreate the topic when this variable is not set
++## to true explicitly.
++## See ticket#1240 for more details.
++auto.create.topics.enable=true

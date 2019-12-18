@@ -1,3 +1,11 @@
+kafka (2.2.1-1) unstable; urgency=low
+
+  * Update Kafka version to 2.2.1
+  * Execute configure-topics under kafka user.
+  * Move data logs directory to /var/lib/kafka.
+
+ -- Viacheslav Chimishuk <vchimishuk@yandex.ru>  Wed, 18 Dec 2019 22:14:00 +0200
+
 kafka (0.8.2.2-7) unstable; urgency=low
 
   * extend topics configuration script;

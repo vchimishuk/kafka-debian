@@ -1,2 +1,2 @@
-server.properties.patch
-log4j.properties.patch
+02_server.properties.patch
+01_log4j.properties.patch
